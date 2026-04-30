@@ -1,0 +1,14 @@
+# Build artifacts
+build/
+capstone
+
+# STB single-file headers (auto-downloaded by make)
+src/stb_image.h
+src/stb_image_write.h
+
+# Runtime-generated output (populated after running on a GPU machine)
+output/
+logs/
+
+# macOS
+.DS_Store
