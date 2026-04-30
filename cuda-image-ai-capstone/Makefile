@@ -19,19 +19,19 @@ LD_FLAGS   := -L $(CUDA_PATH)/lib64 -lcudart
 BUILD_DIR  := build
 TARGET     := capstone
 
-CUDA_OBJ   := $(BUILD_DIR)/kernels.cu.o
-CXX_OBJS   := $(BUILD_DIR)/processor.cpp.o \
-              $(BUILD_DIR)/image_io.cpp.o   \
+CUDA_OBJS  := $(BUILD_DIR)/kernels.cu.o \
+              $(BUILD_DIR)/processor.cu.o
+CXX_OBJS   := $(BUILD_DIR)/image_io.cpp.o \
               $(BUILD_DIR)/main.cpp.o
 
 .PHONY: all clean run_demo stb_headers
 
 all: stb_headers $(TARGET)
 
-$(TARGET): $(CUDA_OBJ) $(CXX_OBJS)
+$(TARGET): $(CUDA_OBJS) $(CXX_OBJS)
 	$(NVCC) -arch=$(GPU_ARCH) -o $@ $^ $(LD_FLAGS)
 
-$(BUILD_DIR)/kernels.cu.o: src/kernels.cu | $(BUILD_DIR)
+$(BUILD_DIR)/%.cu.o: src/%.cu | $(BUILD_DIR)
 	$(NVCC) $(NVCC_FLAGS) -dc -o $@ $<
 
 $(BUILD_DIR)/%.cpp.o: src/%.cpp | $(BUILD_DIR)

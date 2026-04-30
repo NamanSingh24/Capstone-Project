@@ -175,7 +175,7 @@ std::string CapstoneProcessor::FilterName(FilterType f) {
     return "unknown";
 }
 
-FilterType CapstoneProcessor::ParseFilter(const std::string& name) {
+CapstoneProcessor::FilterType CapstoneProcessor::ParseFilter(const std::string& name) {
     if (name == "grayscale")  return FilterType::kGrayscale;
     if (name == "gaussian")   return FilterType::kGaussianBlur;
     if (name == "sobel")      return FilterType::kSobelEdge;
@@ -193,7 +193,7 @@ FilterType CapstoneProcessor::ParseFilter(const std::string& name) {
     throw std::invalid_argument("Unknown filter: " + name);
 }
 
-std::vector<FilterType> CapstoneProcessor::AllFilters() {
+std::vector<CapstoneProcessor::FilterType> CapstoneProcessor::AllFilters() {
     return {
         FilterType::kGrayscale, FilterType::kGaussianBlur,
         FilterType::kSobelEdge, FilterType::kHistogramEqualize,
