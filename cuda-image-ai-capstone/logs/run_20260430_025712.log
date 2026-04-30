@@ -1,0 +1,4 @@
+=== capstone run 20260430_025712 ===
+[capstone] GPU: NVIDIA L4  (SM 8.9, 22593 MB VRAM)
+[capstone] streams=4  filter=all
+[capstone] ERROR: no images found in 'data'
